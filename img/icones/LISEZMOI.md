@@ -1,5 +1,22 @@
 # Les vignettes des icônes
 
+## Déjà en place
+
+Les onze projets qui ont un site en ligne ont leur vignette :
+
+| Projet | Source |
+|---|---|
+| odysseus, comebacks, spotlightify | favicon SVG du site |
+| visualizer.mp3 | favicon PNG 180 px |
+| cortis-index, k-shelf, carnet-de-dramas, tunewave, japan-bingo, links, rpg | capture de la page d'accueil |
+
+Les sept captures sont là **pour débuter** : à 46 px elles se ressemblent un peu
+toutes. Remplace-les quand tu auras mieux, le nom de fichier est déjà le bon.
+
+Les neuf autres icônes (Showreel, Affiches, Motion, Montage…) attendent encore
+leur image et affichent une pastille de couleur.
+
+
 Une image par projet. Format conseillé : **carré, 256 × 256 px**, JPG ou PNG.
 Elles sont affichées à 46 px de côté, donc inutile de partir d'un fichier énorme.
 
