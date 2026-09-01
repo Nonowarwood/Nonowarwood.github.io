@@ -2,9 +2,8 @@
 <!--
   ╔══════════════════════════════════════════════════════════════════╗
   ║  PORTFOLIO v2 — Noah Guerbois                                    ║
-  ║  Base du site. Tout ce qui est marqué [À REMPLIR] est à changer. ║
-  ║  Images de projets : à déposer dans /img/projets/                ║
-  ║  Objets détourés (PNG transparents) : dans /img/cutouts/         ║
+  ║  [À REMPLIR] = à changer.  Visuels → /img/projets/               ║
+  ║  Objets détourés (PNG transparent) → /img/cutouts/               ║
   ╚══════════════════════════════════════════════════════════════════╝
 -->
 <html lang="fr">
@@ -13,6 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Noah Guerbois — Portfolio</title>
 <meta name="description" content="Portfolio de Noah Guerbois — motion design, montage, graphisme.">
+<meta name="theme-color" content="#EDEBE6">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,19 +20,16 @@
 </head>
 <body>
 
-<!-- ══ BARRE DE MENU (façon macOS) ══ -->
+<!-- ══ BARRE DE MENU ══ -->
 <header class="menubar">
   <div class="menubar__group">
     <span class="menubar__logo" aria-hidden="true"></span>
     <strong>Noah&nbsp;Guerbois</strong>
-    <span class="menubar__sep">/</span>
-    <span class="dim">@nonowarwood</span>
+    <span class="menubar__sep">/</span><span class="dim">@nonowarwood</span>
   </div>
   <nav class="menubar__group menubar__nav">
-    <a href="#travaux">Travaux</a>
-    <a href="#outils">Outils</a>
-    <a href="#apropos">À&nbsp;propos</a>
-    <a href="#contact">Contact</a>
+    <a href="#travaux">Travaux</a><a href="#outils">Outils</a>
+    <a href="#apropos">À&nbsp;propos</a><a href="#contact">Contact</a>
   </nav>
   <div class="menubar__group">
     <span class="status"><i></i>Disponible</span>
@@ -42,127 +39,144 @@
 
 <main>
 
-  <!-- ══ HERO ══ -->
-  <section class="hero">
+  <!-- ══ 1. HERO ══════════════════════════════════════════════ -->
+  <section class="hero" data-stage>
     <div class="hero__meta">
       <div><span class="dim">Élève</span><br>Spécialité NSI</div>
       <div><span class="dim">Discipline</span><br>Motion&nbsp;· Montage&nbsp;· Graphisme</div>
       <div><span class="dim">Basé à</span><br>France</div>
       <div class="ta-r"><span class="dim">Édition</span><br>V2 — 2026</div>
     </div>
-
     <h1 class="hero__title">
       <span class="line">NOAH</span>
       <span class="line line--out">GUERBOIS</span>
     </h1>
-
-    <!-- étiquettes annotées, motif repris des références 05 / 03 -->
     <span class="annot annot--1">16&nbsp;ans, et déjà trop de projets</span>
     <span class="annot annot--2">fait des trucs qui bougent</span>
-
     <p class="hero__lede">
       J'entre en première, spécialité informatique. En attendant les cours,
       je fabrique&nbsp;: du <em>motion design</em>, du montage, des affiches,
-      et maintenant des sites. Voici ce que j'ai déjà fait.
+      et maintenant des sites.
     </p>
-
-    <a class="scroll-cue" href="#travaux">
+    <a class="scroll-cue" href="#frais">
       <span>Faire défiler</span>
       <svg width="9" height="26" viewBox="0 0 9 26" aria-hidden="true"><path d="M4.5 0v24M1 20.5l3.5 4 3.5-4" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
     </a>
   </section>
 
-  <!-- ══ TRAVAUX ══ -->
-  <section class="works" id="travaux">
+  <!-- ══ 2. RAFRAÎCHISSANT — l'écran bleu, d'après la référence 09 ══ -->
+  <section class="fresh" id="frais" data-stage>
+    <div class="fresh__sticky">
+      <div class="fresh__bar">
+        <span>2026</span><span>NOAH GUERBOIS</span><span>Motion&nbsp;&amp;&nbsp;Graphisme</span>
+      </div>
+
+      <h2 class="fresh__word">Portfolio</h2>
+
+      <!-- Tomate dessinée en SVG, tramée par un masque CSS. Aucune photo. -->
+      <div class="fresh__object halftone" aria-hidden="true">
+        <svg viewBox="0 0 400 400" width="100%" height="100%">
+          <defs>
+            <radialGradient id="tg" cx="38%" cy="32%" r="72%">
+              <stop offset="0%"  stop-color="#FF6A3D"/>
+              <stop offset="52%" stop-color="#EE2C1A"/>
+              <stop offset="100%" stop-color="#B00D0D"/>
+            </radialGradient>
+            <radialGradient id="lg" cx="45%" cy="35%" r="60%">
+              <stop offset="0%"  stop-color="#7BE04A"/>
+              <stop offset="100%" stop-color="#1F7A21"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="200" cy="222" rx="163" ry="150" fill="url(#tg)"/>
+          <ellipse cx="150" cy="168" rx="52" ry="38" fill="#FF8A5B" opacity=".55"/>
+          <g fill="url(#lg)">
+            <path d="M200 96c14 10 22 26 24 44-16-6-33-6-49 1 3-18 11-34 25-45z"/>
+            <path d="M198 132c-22-14-47-19-72-14 12 17 31 28 52 32 8 1 15-6 20-18z"/>
+            <path d="M202 132c22-14 47-19 72-14-12 17-31 28-52 32-8 1-15-6-20-18z"/>
+            <path d="M196 140c-14 16-22 36-23 57 20-6 37-19 47-37 4-8-8-20-24-20z"/>
+            <path d="M204 140c14 16 22 36 23 57-20-6-37-19-47-37-4-8 8-20 24-20z"/>
+          </g>
+          <path d="M200 92c4 0 7 3 7 7v42c0 4-3 7-7 7s-7-3-7-7V99c0-4 3-7 7-7z" fill="#186B1A"/>
+        </svg>
+      </div>
+
+      <div class="tagbox tagbox--l"><b>FRAIS</b><span>100&nbsp;%</span><b>TENDANCE</b><span>100&nbsp;%</span></div>
+      <div class="tagbox tagbox--r">Rafraîchissant&nbsp;!</div>
+
+      <p class="fresh__note">
+        Je fais des images qui bougent et des mises en page qui respirent.
+        Tout ce qui suit a été fait entre deux devoirs.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ 3. DOSSIERS — d'après la référence 14 ══════════════════ -->
+  <section class="drawer" id="travaux">
+    <div class="drawer__head">
+      <span class="dim">du brouillon</span><span class="dim">à</span><span class="dim">la forme</span>
+    </div>
+    <div class="drawer__title"><span>MES</span><span>PROJETS</span></div>
+
+    <div class="folders" id="folders">
+      <article class="folder" style="--c:#F2CE5B; --d:#C9A62F; --i:0" data-cat="Motion" tabindex="0" role="button" aria-pressed="false">
+        <span class="folder__label">MOTION</span>
+        <span class="peek peek--a"></span><span class="peek peek--b"></span>
+      </article>
+      <article class="folder" style="--c:#6E76D8; --d:#4950B4; --i:1" data-cat="Montage" tabindex="0" role="button" aria-pressed="false">
+        <span class="folder__label">MONTAGE</span>
+        <span class="peek peek--a"></span>
+      </article>
+      <article class="folder" style="--c:#F0A6C4; --d:#CE7C9E; --i:2" data-cat="Graphisme" tabindex="0" role="button" aria-pressed="false">
+        <span class="folder__label">GRAPHISME</span>
+        <span class="peek peek--a"></span><span class="peek peek--b"></span>
+      </article>
+      <article class="folder" style="--c:#74C583; --d:#4C9A5C; --i:3" data-cat="Web" tabindex="0" role="button" aria-pressed="false">
+        <span class="folder__label">WEB</span>
+        <svg class="folder__star" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 2 62 38 98 38 69 60 80 96 50 74 20 96 31 60 2 38 38 38Z"/></svg>
+      </article>
+    </div>
+  </section>
+
+  <!-- ══ 4. TRAVAUX ════════════════════════════════════════════ -->
+  <section class="works">
     <div class="works__head">
-      <h2 class="section-title">Travaux choisis<sup>(06)</sup></h2>
-      <div class="switch" role="tablist" aria-label="Mode d'affichage">
-        <button role="tab" aria-selected="true"  data-view="grid">Grille</button>
-        <button role="tab" aria-selected="false" data-view="desk">Bureau</button>
-        <button role="tab" aria-selected="false" data-view="list">Liste</button>
+      <h2 class="section-title">Travaux choisis<sup id="count">(06)</sup></h2>
+      <div class="works__ctl">
+        <button class="clear" id="clear" hidden>Tout voir ✕</button>
+        <div class="switch" role="tablist" aria-label="Mode d'affichage">
+          <button role="tab" aria-selected="true"  data-view="grid">Grille</button>
+          <button role="tab" aria-selected="false" data-view="list">Liste</button>
+        </div>
       </div>
     </div>
 
     <div class="works__stage view-grid" id="stage">
-
-      <article class="card" style="--x:4%;  --y:2%;  --w:23%; --r:-3deg" data-cat="Motion">
-        <a href="#" class="card__link">
-          <div class="thumb r-4x5"><span>IMG</span></div>
-          <div class="card__meta">
-            <span class="idx">01</span>
-            <h3>Showreel 2025</h3>
-            <span class="dim">After Effects — 2025</span>
-          </div>
-        </a>
-      </article>
-
-      <article class="card" style="--x:31%; --y:14%; --w:27%; --r:2deg" data-cat="Montage">
-        <a href="#" class="card__link">
-          <div class="thumb r-16x9"><span>IMG</span></div>
-          <div class="card__meta">
-            <span class="idx">02</span>
-            <h3>Vidéos YouTube</h3>
-            <span class="dim">Premiere Pro — 2024&nbsp;→&nbsp;2025</span>
-          </div>
-        </a>
-      </article>
-
-      <article class="card" style="--x:63%; --y:0%;  --w:21%; --r:-1.5deg" data-cat="Identité">
-        <a href="#" class="card__link">
-          <div class="thumb r-1x1"><span>IMG</span></div>
-          <div class="card__meta">
-            <span class="idx">03</span>
-            <h3>Logo &amp; charte</h3>
-            <span class="dim">Illustrator — 2025</span>
-          </div>
-        </a>
-      </article>
-
-      <article class="card" style="--x:12%; --y:48%; --w:24%; --r:2.5deg" data-cat="Illustration">
-        <a href="#" class="card__link">
-          <div class="thumb r-4x5"><span>IMG</span></div>
-          <div class="card__meta">
-            <span class="idx">04</span>
-            <h3>Série «&nbsp;Objets&nbsp;»</h3>
-            <span class="dim">Photoshop — 2024</span>
-          </div>
-        </a>
-      </article>
-
-      <article class="card" style="--x:44%; --y:56%; --w:26%; --r:-2deg" data-cat="Web">
-        <a href="#" class="card__link">
-          <div class="thumb r-16x9"><span>IMG</span></div>
-          <div class="card__meta">
-            <span class="idx">05</span>
-            <h3>Portfolio v1</h3>
-            <span class="dim">HTML / CSS — 2024</span>
-          </div>
-        </a>
-      </article>
-
-      <article class="card" style="--x:74%; --y:40%; --w:20%; --r:3deg" data-cat="Affiches">
-        <a href="#" class="card__link">
-          <div class="thumb r-4x5"><span>IMG</span></div>
-          <div class="card__meta">
-            <span class="idx">06</span>
-            <h3>Affiches</h3>
-            <span class="dim">Photoshop — 2025</span>
-          </div>
-        </a>
-      </article>
-
+      <article class="card" data-cat="Motion"><a href="#" class="card__link">
+        <div class="thumb r-4x5"><span>IMG</span></div>
+        <div class="card__meta"><span class="idx">01</span><h3>Showreel 2025</h3><span class="dim">After Effects — 2025</span></div></a></article>
+      <article class="card" data-cat="Montage"><a href="#" class="card__link">
+        <div class="thumb r-16x9"><span>IMG</span></div>
+        <div class="card__meta"><span class="idx">02</span><h3>Vidéos YouTube</h3><span class="dim">Premiere Pro — 2024&nbsp;→&nbsp;2025</span></div></a></article>
+      <article class="card" data-cat="Graphisme"><a href="#" class="card__link">
+        <div class="thumb r-1x1"><span>IMG</span></div>
+        <div class="card__meta"><span class="idx">03</span><h3>Logo &amp; charte</h3><span class="dim">Illustrator — 2025</span></div></a></article>
+      <article class="card" data-cat="Graphisme"><a href="#" class="card__link">
+        <div class="thumb r-4x5"><span>IMG</span></div>
+        <div class="card__meta"><span class="idx">04</span><h3>Série «&nbsp;Objets&nbsp;»</h3><span class="dim">Photoshop — 2024</span></div></a></article>
+      <article class="card" data-cat="Web"><a href="#" class="card__link">
+        <div class="thumb r-16x9"><span>IMG</span></div>
+        <div class="card__meta"><span class="idx">05</span><h3>Portfolio v1</h3><span class="dim">HTML / CSS — 2024</span></div></a></article>
+      <article class="card" data-cat="Graphisme"><a href="#" class="card__link">
+        <div class="thumb r-4x5"><span>IMG</span></div>
+        <div class="card__meta"><span class="idx">06</span><h3>Affiches</h3><span class="dim">Photoshop — 2025</span></div></a></article>
     </div>
 
-    <div class="works__foot">
-      <span class="dim">Cliquer pour ouvrir</span>
-      <span class="dim">01 — 06</span>
-    </div>
+    <div class="works__foot"><span class="dim">Cliquer pour ouvrir</span><span class="dim" id="range">01 — 06</span></div>
   </section>
 
-  <!-- ══ OUTILS ══ -->
+  <!-- ══ 5. OUTILS ═════════════════════════════════════════════ -->
   <section class="tools" id="outils">
     <h2 class="section-title">Outils &amp; compétences</h2>
-
     <div class="tools__inner">
       <ul class="bars">
         <li style="--v:85"><span>Premiere Pro</span><i></i><b>85</b></li>
@@ -173,37 +187,27 @@
         <li style="--v:45"><span>HTML / CSS</span><i></i><b>45</b></li>
         <li style="--v:20"><span>JavaScript</span><i></i><b>20</b></li>
       </ul>
-
-      <aside class="note">
-        <p><em>Note.</em> Les pourcentages sont là pour la forme — remplace-les
-        par ce qui est honnête. Un portfolio qui sous-promet vaut mieux qu'un
-        portfolio qui sur-vend.</p>
-      </aside>
+      <aside class="note"><p><em>Note.</em> Les pourcentages sont là pour la forme —
+        remplace-les par ce qui est honnête. Un portfolio qui sous-promet vaut mieux
+        qu'un portfolio qui sur-vend.</p></aside>
     </div>
-
-    <!-- dock, motif repris de la référence 01 -->
-    <div class="dock" aria-label="Logiciels utilisés">
-      <span class="dock__app" data-app="Pr">Pr</span>
-      <span class="dock__app" data-app="Ae">Ae</span>
-      <span class="dock__app" data-app="Ps">Ps</span>
-      <span class="dock__app" data-app="Ai">Ai</span>
-      <span class="dock__app" data-app="Fig">Fg</span>
-      <span class="dock__app" data-app="Code">&lt;/&gt;</span>
+    <div class="dock" aria-label="Logiciels">
+      <span class="dock__app">Pr</span><span class="dock__app">Ae</span><span class="dock__app">Ps</span>
+      <span class="dock__app">Ai</span><span class="dock__app">Fg</span><span class="dock__app">&lt;/&gt;</span>
     </div>
   </section>
 
-  <!-- ══ À PROPOS ══ -->
+  <!-- ══ 6. À PROPOS ═══════════════════════════════════════════ -->
   <section class="about" id="apropos">
     <h2 class="section-title">À propos</h2>
     <div class="about__inner">
-      <div class="thumb r-4x5 about__portrait"><span>PORTRAIT — 4:5</span></div>
+      <div class="thumb r-4x5 about__portrait"><span>PORTRAIT</span></div>
       <div class="about__text">
-        <p class="lead">[À REMPLIR] Deux ou trois phrases sur toi. D'où vient
-        l'envie de faire des images, ce que tu cherches à apprendre cette année,
-        et ce que tu aimerais faire ensuite.</p>
-        <p>Évite le CV. Raconte plutôt comment tu bosses&nbsp;: ce que tu ouvres
-        en premier quand tu commences un projet, ce qui te fait recommencer trois
-        fois, le genre de truc que personne ne remarque mais qui te tient à cœur.</p>
+        <p class="lead">[À REMPLIR] Deux ou trois phrases sur toi. D'où vient l'envie
+        de faire des images, ce que tu cherches à apprendre cette année, et ce que tu
+        aimerais faire ensuite.</p>
+        <p>Évite le CV. Raconte plutôt comment tu bosses : ce que tu ouvres en premier
+        quand tu commences un projet, ce qui te fait recommencer trois fois.</p>
         <dl class="facts">
           <div><dt>Année</dt><dd>Entrée en première — spé.&nbsp;NSI</dd></div>
           <div><dt>Depuis</dt><dd>[À REMPLIR] 2022</dd></div>
@@ -215,30 +219,23 @@
 
 </main>
 
-<!-- ══ CONTACT — façon ticket de caisse, référence 21 ══ -->
+<!-- ══ CONTACT ══ -->
 <footer id="contact">
   <div class="receipt">
-    <h2>CONTACT</h2>
-    <hr>
-    <p class="receipt__sub">Chaque ligne est une porte d'entrée.</p>
-    <hr>
+    <h2>CONTACT</h2><hr>
+    <p class="receipt__sub">Chaque ligne est une porte d'entrée.</p><hr>
     <ul>
       <li><a href="mailto:noahguerbois@gmail.com"><span>E-mail</span><b>001</b></a></li>
-      <li><a href="#" data-todo="lien chaîne"><span>YouTube</span><b>002</b></a></li>
-      <li><a href="#" data-todo="lien profil"><span>Instagram</span><b>003</b></a></li>
-      <li><a href="#" data-todo="lien profil"><span>GitHub</span><b>004</b></a></li>
-    </ul>
-    <hr>
+      <li><a href="#"><span>YouTube</span><b>002</b></a></li>
+      <li><a href="#"><span>Instagram</span><b>003</b></a></li>
+      <li><a href="https://github.com/Nonowarwood"><span>GitHub</span><b>004</b></a></li>
+    </ul><hr>
     <p class="receipt__total"><span>Total</span><b>1 élève</b></p>
   </div>
-
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee__track">
-      <span>Disponible pour projets ✳ Bienvenue sur mon portfolio ✳ Disponible pour projets ✳ Bienvenue sur mon portfolio ✳</span>
-      <span>Disponible pour projets ✳ Bienvenue sur mon portfolio ✳ Disponible pour projets ✳ Bienvenue sur mon portfolio ✳</span>
-    </div>
-  </div>
-
+  <div class="marquee" aria-hidden="true"><div class="marquee__track">
+    <span>Disponible pour projets ✳ Bienvenue sur mon portfolio ✳ Disponible pour projets ✳ Bienvenue sur mon portfolio ✳</span>
+    <span>Disponible pour projets ✳ Bienvenue sur mon portfolio ✳ Disponible pour projets ✳ Bienvenue sur mon portfolio ✳</span>
+  </div></div>
   <div class="colophon">
     <span>© 2026 Noah Guerbois</span>
     <span class="dim">Fait à la main — HTML, CSS, un peu de JS</span>

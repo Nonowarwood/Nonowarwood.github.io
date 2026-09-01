@@ -15,11 +15,34 @@ inspiration/        les 22 références Pinterest (ne pas publier)
 
 ## Le concept
 
-La métaphore du **bureau / système d'exploitation**, tirée des références 01, 16, 14 et 21 :
-barre de menu façon macOS, poignées de sélection bleues au survol des projets,
-dock de logiciels, et un contact en forme de ticket de caisse.
-Trois façons de regarder les mêmes travaux — **Grille**, **Bureau** (éparpillé), **Liste** —
-motif repris des références 02 et 08.
+La page traverse quatre pièces qui changent de température, au lieu de défiler d'un bloc :
+
+1. **Hero** — fond crème, nom en très grand, annotations en marge.
+2. **Rafraîchissant** — plein écran cobalt, d'après la référence 09 (l'affiche à la tomate).
+   Section collante : la tomate grossit et pivote, le mot dérive, les encadrés entrent
+   par les côtés au fil du défilement.
+3. **Le tiroir** — fond sable, dossiers cartonnés d'après la référence 14. Cliquer sur
+   un dossier filtre les travaux par catégorie.
+4. **Travaux / Outils / À propos** — retour au crème, puis pied noir avec le ticket de caisse.
+
+Le reste vient des références 01, 16 et 21 : barre de menu façon macOS, poignées de
+sélection bleues au survol, dock de logiciels, contact en ticket.
+
+### Aucune image dans tout ça
+
+La tomate est un SVG dessiné à la main, les dossiers et l'étoile sont en CSS, la texture
+papier est un filtre de bruit SVG en ligne. Le rendu tramé vient d'un masque en grille de
+points (classe `.halftone`) — applique-le à **n'importe quelle photo** et elle prend le même
+traitement d'impression.
+
+### La mise en scène
+
+`js/main.js` écrit une variable `--p` (de 0 à 1) sur chaque section marquée `data-stage`,
+selon sa progression dans l'écran. Le CSS s'en sert pour animer. Pour ajouter un effet :
+
+```css
+.mon-element{ transform: translateY(calc(var(--p) * -80px)); }
+```
 
 ## Pour lancer en local
 
@@ -53,18 +76,21 @@ Remplace-le par :
 ```
 
 Les classes de ratio disponibles : `r-1x1`, `r-4x5`, `r-16x9`.
-En vue Grille tout est ramené au 4:5 pour que la grille reste nette ;
-les ratios ne se voient qu'en vue Bureau.
+En vue Grille tout est ramené au 4:5 pour que la grille reste nette.
 
 ## Ajouter un projet
 
 Copie un bloc `<article class="card">`, change le numéro `idx`, le titre, la légende.
-Pour la vue Bureau, donne-lui une position dans l'attribut `style` :
-`--x` et `--y` (position en %), `--w` (largeur en %), `--r` (rotation).
-Pense à mettre à jour le compteur `(06)` du titre et le `01 — 06` en bas.
+L'attribut `data-cat` doit valoir `Motion`, `Montage`, `Graphisme` ou `Web` —
+c'est lui qui relie le projet à son dossier.
 
 ## Ajouter des objets détourés
 
 C'est le cœur de l'esthétique des références (04, 05, 22) : des objets photographiés,
-détourés, posés sur le fond crème. Mets tes PNG dans `img/cutouts/` et pose-les
-en absolu dans le hero. Un objet bien détouré vaut dix effets CSS.
+détourés, posés sur le fond crème. Mets tes PNG dans `img/cutouts/`.
+
+Le plus juste ici, c'est de **photographier tes propres objets** — c'est littéralement le
+sujet de la référence 22 (« les choses qui s'accumulent au fond des tiroirs »). Fond uni,
+lumière de fenêtre, détourage, et tu as des assets qui n'appartiennent qu'à toi.
+Les images du dossier `inspiration/` sont le travail d'autres graphistes : elles restent
+en local, elles sont exclues du dépôt par `.gitignore`, et elles n'ont rien à faire en ligne.
