@@ -1,78 +1,102 @@
 /* ═══════════════════════════════════════════════════════════════
-   PORTFOLIO v2 — interactions
-   1. Horloge   2. Moteur de défilement   3. Dossiers (filtrage)
-   4. Vue grille / liste   5. Apparitions
+   PORTFOLIO v2
+   1 Défilement mis en scène   2 Tiroir → classeur (filtre)
+   3 Classeur → fenêtre (détail)   4 Apparitions
    ═══════════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $  = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return [].slice.call((r || document).querySelectorAll(s)); };
 
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ── 1. Horloge ────────────────────────────────────────────── */
-  var clock = document.getElementById('clock');
-  if (clock) {
-    var tick = function () { clock.textContent = new Date().toLocaleTimeString('fr-FR'); };
-    tick(); setInterval(tick, 1000);
-  }
-
-  /* ── 2. Moteur de défilement ───────────────────────────────────
-     Chaque [data-stage] reçoit --p : 0 quand il entre par le bas,
-     1 quand il sort par le haut. Le CSS s'en sert pour la mise en scène. */
-  var stages = [].slice.call(document.querySelectorAll('[data-stage]'));
+  /* ── 1. Moteur de défilement ───────────────────────────────────
+     Chaque [data-stage] reçoit --p : 0 à l'entrée, 1 à la sortie. */
+  var stages = $$('[data-stage]');
   if (stages.length && !reduced) {
-    var ticking = false;
+    var pending = false;
     var paint = function () {
-      var h = window.innerHeight;
+      var h = innerHeight;
       stages.forEach(function (el) {
         var r = el.getBoundingClientRect();
         var p = (h - r.top) / (r.height + h);
         el.style.setProperty('--p', Math.max(0, Math.min(1, p)).toFixed(4));
       });
-      ticking = false;
+      pending = false;
     };
     var onScroll = function () {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(paint);
+      if (pending) return;
+      pending = true; requestAnimationFrame(paint);
     };
     addEventListener('scroll', onScroll, { passive: true });
     addEventListener('resize', onScroll);
     paint();
   }
 
-  /* ── 3. Dossiers : filtrer les travaux ─────────────────────── */
-  var folders = [].slice.call(document.querySelectorAll('.folder'));
-  var cards   = [].slice.call(document.querySelectorAll('.card'));
-  var clearBt = document.getElementById('clear');
-  var count   = document.getElementById('count');
-  var range   = document.getElementById('range');
-  var active  = null;
+  /* ── 3. La fenêtre : afficher un projet ────────────────────── */
+  var rows  = $$('.row');
+  var media = $('#w-media');
 
   function pad(n) { return (n < 10 ? '0' : '') + n; }
 
-  function apply(cat) {
+  function open(row) {
+    if (!row) return;
+    var d = row.dataset;
+    rows.forEach(function (r) { r.classList.toggle('is-active', r === row); });
+
+    $('#w-title').textContent = d.title;
+    $('#w-desc').textContent  = d.desc;
+    $('#w-year').textContent  = d.year;
+    $('#w-type').textContent  = d.type;
+    $('#s-type').textContent  = d.type;
+    $('#s-tool').textContent  = d.tool;
+    $('#s-year').textContent  = d.year;
+    $('#s-cat').textContent   = d.cat;
+    $('#w-num').textContent   = $('.row__n', row).textContent;
+
+    var link = $('#w-link');
+    link.hidden = !d.link;
+    if (d.link) link.href = d.link;
+
+    // une image si le projet en a une, sinon le cadre vide
+    if (media) {
+      media.innerHTML = d.img
+        ? '<img src="' + d.img + '" alt="' + d.title + '">'
+        : '<span>IMG</span>';
+    }
+  }
+
+  rows.forEach(function (row) {
+    row.addEventListener('click', function () { open(row); });
+  });
+
+  /* ── 2. Le tiroir filtre le classeur ───────────────────────── */
+  var folders = $$('.folder');
+  var count   = $('#count');
+  var empty   = $('#empty');
+  var active  = null;
+
+  function filter(cat) {
     active = cat;
-    var shown = 0;
-    cards.forEach(function (c) {
-      var ok = !cat || c.dataset.cat === cat;
-      c.hidden = !ok;
-      if (ok) shown++;
+    var shown = [];
+    rows.forEach(function (r) {
+      var ok = !cat || r.dataset.cat === cat;
+      r.parentNode.hidden = !ok;
+      if (ok) shown.push(r);
     });
     folders.forEach(function (f) {
       f.setAttribute('aria-pressed', String(f.dataset.cat === cat));
     });
-    if (count) count.textContent = '(' + pad(shown) + ')';
-    if (range) range.textContent = shown ? '01 — ' + pad(shown) : 'aucun';
-    if (clearBt) clearBt.hidden = !cat;
+    if (count) count.textContent = shown.length + ' projet' + (shown.length > 1 ? 's' : '');
+    if (empty) empty.hidden = shown.length > 0;
+    // ouvrir le premier du dossier, pour ne jamais laisser la fenêtre orpheline
+    if (shown.length && shown.indexOf($('.row.is-active')) === -1) open(shown[0]);
   }
 
   folders.forEach(function (f) {
     var toggle = function () {
-      apply(active === f.dataset.cat ? null : f.dataset.cat);
-      var stage = document.getElementById('stage');
-      if (stage && active) {
-        stage.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
-      }
+      filter(active === f.dataset.cat ? null : f.dataset.cat);
+      var sc = $('#classeur');
+      if (sc && active) sc.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
     };
     f.addEventListener('click', toggle);
     f.addEventListener('keydown', function (e) {
@@ -80,32 +104,21 @@
     });
   });
 
-  if (clearBt) clearBt.addEventListener('click', function () { apply(null); });
+  open($('.row.is-active') || rows[0]);
+  if (count) count.textContent = rows.length + ' projets';
 
-  /* ── 4. Vue grille / liste ─────────────────────────────────── */
-  var stage   = document.getElementById('stage');
-  var buttons = [].slice.call(document.querySelectorAll('.switch button'));
-  buttons.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      buttons.forEach(function (b) { b.setAttribute('aria-selected', String(b === btn)); });
-      stage.classList.remove('view-grid', 'view-list');
-      stage.classList.add('view-' + btn.dataset.view);
-    });
-  });
-
-  /* ── 5. Apparitions ────────────────────────────────────────── */
-  var targets = document.querySelectorAll('.section-title, .card, .bars, .note, .about__inner, .receipt');
+  /* ── 4. Apparitions ────────────────────────────────────────── */
+  var targets = $$('.section-title, .binder, .window, .bars, .note, .about__inner, .receipt');
   if (reduced || !('IntersectionObserver' in window)) {
-    [].forEach.call(targets, function (el) { el.classList.add('is-in'); });
+    targets.forEach(function (el) { el.classList.add('is-in'); });
     return;
   }
-  [].forEach.call(targets, function (el) { el.classList.add('reveal'); });
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
+  targets.forEach(function (el) { el.classList.add('reveal'); });
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
       if (!e.isIntersecting) return;
-      e.target.classList.add('is-in');
-      io.unobserve(e.target);
+      e.target.classList.add('is-in'); io.unobserve(e.target);
     });
-  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
-  [].forEach.call(targets, function (el) { io.observe(el); });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: .06 });
+  targets.forEach(function (el) { io.observe(el); });
 })();

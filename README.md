@@ -15,34 +15,54 @@ inspiration/        les 22 références Pinterest (ne pas publier)
 
 ## Le concept
 
-La page traverse quatre pièces qui changent de température, au lieu de défiler d'un bloc :
+La page traverse cinq pièces qui changent de température :
 
-1. **Hero** — fond crème, nom en très grand, annotations en marge.
-2. **Rafraîchissant** — plein écran cobalt, d'après la référence 09 (l'affiche à la tomate).
-   Section collante : la tomate grossit et pivote, le mot dérive, les encadrés entrent
-   par les côtés au fil du défilement.
-3. **Le tiroir** — fond sable, dossiers cartonnés d'après la référence 14. Cliquer sur
-   un dossier filtre les travaux par catégorie.
-4. **Travaux / Outils / À propos** — retour au crème, puis pied noir avec le ticket de caisse.
+1. **Accueil** — plein écran cobalt, la tomate tramée, le mot en script qui dérive
+   au défilement. C'est la landing page.
+2. **Le tiroir** — fond sable, dossiers cartonnés. Cliquer un dossier filtre le classeur.
+3. **Le classeur** — sommaire numéroté, lignes fantômes et ligne active en bleu plein.
+4. **La fenêtre** — le projet ouvert : visuel encadré, description, fiche technique.
+5. **Outils / À propos**, puis le pied noir avec le ticket de caisse.
 
-Le reste vient des références 01, 16 et 21 : barre de menu façon macOS, poignées de
-sélection bleues au survol, dock de logiciels, contact en ticket.
+Le tiroir trie, le classeur liste, la fenêtre montre. Cliquer une ligne du classeur
+change la fenêtre sans recharger la page.
 
-### Aucune image dans tout ça
+### Aucune image tierce
 
-La tomate est un SVG dessiné à la main, les dossiers et l'étoile sont en CSS, la texture
-papier est un filtre de bruit SVG en ligne. Le rendu tramé vient d'un masque en grille de
-points (classe `.halftone`) — applique-le à **n'importe quelle photo** et elle prend le même
-traitement d'impression.
+La tomate est un SVG dessiné à la main, les dossiers et l'étoile sont en CSS, la
+texture papier est un filtre de bruit SVG en ligne. Le rendu tramé vient d'un masque
+en grille de points (classe `.halftone`) : applique-le à **n'importe quelle photo**
+et elle prend le même traitement d'impression.
+
+Pour mettre ta propre tomate, dans `index.html`, remplace le bloc `<svg>` de
+`.landing__object` par `<img src="img/cutouts/tomate.png" alt="">`. La classe
+`.halftone` fait le reste.
 
 ### La mise en scène
 
-`js/main.js` écrit une variable `--p` (de 0 à 1) sur chaque section marquée `data-stage`,
-selon sa progression dans l'écran. Le CSS s'en sert pour animer. Pour ajouter un effet :
+`js/main.js` écrit une variable `--p` (de 0 à 1) sur chaque section marquée
+`data-stage`, selon sa progression dans l'écran. Le CSS s'en sert pour animer :
 
 ```css
 .mon-element{ transform: translateY(calc(var(--p) * -80px)); }
 ```
+
+## Ajouter un projet
+
+Copie un `<li>` du `#catalog`. Tout tient dans les attributs `data-` du bouton :
+
+```html
+<button class="row" data-cat="Web"
+        data-title="Mon projet" data-type="Site web" data-tool="HTML, CSS"
+        data-year="2026" data-link="https://..." data-img="img/projets/truc.jpg"
+        data-desc="Une ou deux phrases.">
+  <span class="row__n">07</span><span class="row__t">Mon projet</span><span class="row__c">Web</span>
+</button>
+```
+
+`data-cat` doit valoir `Motion`, `Montage`, `Graphisme` ou `Web` — c'est ce qui relie
+le projet à son dossier. `data-img` et `data-link` sont facultatifs : sans eux, la
+fenêtre affiche un cadre vide et masque le bouton.
 
 ## Pour lancer en local
 
@@ -60,29 +80,6 @@ python3 -m http.server 8000
 - [ ] Les 6 projets : titres, années, et surtout les visuels
 - [ ] Le portrait
 - [ ] Ajuster les pourcentages de compétences (ils sont inventés)
-
-## Remplacer une vignette par une vraie image
-
-Chaque projet contient ce bloc :
-
-```html
-<div class="thumb r-4x5"><span>IMG</span></div>
-```
-
-Remplace-le par :
-
-```html
-<div class="thumb r-4x5"><img src="img/projets/showreel.jpg" alt="Showreel 2025"></div>
-```
-
-Les classes de ratio disponibles : `r-1x1`, `r-4x5`, `r-16x9`.
-En vue Grille tout est ramené au 4:5 pour que la grille reste nette.
-
-## Ajouter un projet
-
-Copie un bloc `<article class="card">`, change le numéro `idx`, le titre, la légende.
-L'attribut `data-cat` doit valoir `Motion`, `Montage`, `Graphisme` ou `Web` —
-c'est lui qui relie le projet à son dossier.
 
 ## Ajouter des objets détourés
 
