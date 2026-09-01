@@ -1,270 +1,119 @@
 <!doctype html>
 <!--
   ╔══════════════════════════════════════════════════════════════════╗
-  ║  PORTFOLIO v2 — Noah Guerbois                                    ║
-  ║  Accueil → Tiroir (tri) → Classeur (liste) → Fenêtre (détail)    ║
-  ║  [À REMPLIR] = à changer.  Visuels → /img/projets/               ║
+  ║  ÉCRAN 01 — LE BUREAU                                            ║
+  ║                                                                  ║
+  ║  FOND D'ÉCRAN  →  img/fond/fond.jpg   (voir .wall plus bas)      ║
+  ║  VIGNETTES     →  img/icones/*.jpg    (voir img/icones/LISEZMOI) ║
+  ║                                                                  ║
+  ║  Chaque icône est un <button class="ic"> avec :                  ║
+  ║    style="--x:.. --y:.."   position en % dans le bureau          ║
+  ║    <img> dans .ic__tile    la vignette, si tu l'as               ║
+  ║    --c:#xxx                la couleur de secours, sinon          ║
   ╚══════════════════════════════════════════════════════════════════╝
 -->
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Noah Guerbois — Portfolio</title>
-<meta name="description" content="Portfolio de Noah Guerbois — motion design, montage, graphisme.">
-<meta name="theme-color" content="#2B4FD4">
+<title>Noah Guerbois — Bureau</title>
+<meta name="description" content="Portfolio de Noah Guerbois.">
+<meta name="theme-color" content="#EFEDEA">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<header class="menubar">
-  <div class="menubar__group">
-    <span class="menubar__logo" aria-hidden="true"></span>
-    <strong>Noah&nbsp;Guerbois</strong>
-    <span class="menubar__sep">/</span><span class="dim">@nonowarwood</span>
+<main class="desktop" id="desktop">
+
+  <!-- ── LE FOND D'ÉCRAN ──────────────────────────────────────────
+       Quand tu auras ta photo, décommente la ligne <img> ci-dessous
+       et dépose le fichier dans img/fond/.
+       Le voile blanc et le flou du CSS s'appliquent tout seuls.     -->
+  <div class="wall" aria-hidden="true">
+    <!-- <img src="img/fond/fond.jpg" alt=""> -->
   </div>
-  <nav class="menubar__group menubar__nav">
-    <a href="#tiroir">Tiroir</a><a href="#classeur">Projets</a>
-    <a href="#outils">Outils</a><a href="#apropos">À&nbsp;propos</a><a href="#contact">Contact</a>
-  </nav>
-  <div class="menubar__group">
-    <span class="status"><i></i>Disponible</span>
+
+  <!-- ── LES ICÔNES ───────────────────────────────────────────── -->
+  <div class="icons" id="icons">
+
+    <button class="ic" style="--x:23%; --y:20%; --s:52px; --c:#C9D3E8">
+      <span class="ic__tile"></span><span class="ic__label">Odysseus</span></button>
+
+    <button class="ic" style="--x:33%; --y:20%; --s:46px; --c:#E8D5C9">
+      <span class="ic__tile"></span><span class="ic__label">Visualizer.mp3</span></button>
+
+    <button class="ic" style="--x:59%; --y:17%; --s:40px; --c:#2E2E33">
+      <span class="ic__tile"></span><span class="ic__label">Cortis Index</span></button>
+
+    <button class="ic" style="--x:67%; --y:14%; --s:44px; --c:#3B4FA8">
+      <span class="ic__tile"></span><span class="ic__label">K-Shelf</span></button>
+
+    <button class="ic" style="--x:39%; --y:25%; --s:58px; --c:#D8DCD6">
+      <span class="ic__tile"></span><span class="ic__label">Showreel 2025</span></button>
+
+    <button class="ic" style="--x:19%; --y:32%; --s:44px; --c:#C4322A">
+      <span class="ic__tile"></span><span class="ic__label">Affiches</span></button>
+
+    <button class="ic" style="--x:26%; --y:39%; --s:42px; --c:#E3C7CF">
+      <span class="ic__tile"></span><span class="ic__label">Carnet de dramas</span></button>
+
+    <button class="ic" style="--x:61%; --y:30%; --s:48px; --c:#4A4A52">
+      <span class="ic__tile"></span><span class="ic__label">Comebacks</span></button>
+
+    <button class="ic" style="--x:78%; --y:36%; --s:46px; --c:#B8C6D9">
+      <span class="ic__tile"></span><span class="ic__label">TuneWave</span></button>
+
+    <button class="ic" style="--x:89%; --y:44%; --s:38px; --c:#D6CFC2">
+      <span class="ic__tile"></span><span class="ic__label">Japan Bingo</span></button>
+
+    <button class="ic" style="--x:40%; --y:39%; --s:50px; --c:#8E3B4E">
+      <span class="ic__tile"></span><span class="ic__label">Logo &amp; charte</span></button>
+
+    <button class="ic" style="--x:48%; --y:41%; --s:44px; --c:#5C6B4A">
+      <span class="ic__tile"></span><span class="ic__label">Vidéos YouTube</span></button>
+
+    <button class="ic" style="--x:56%; --y:40%; --s:52px; --c:#2A2A2E">
+      <span class="ic__tile"></span><span class="ic__label">Montage</span></button>
+
+    <button class="ic" style="--x:72%; --y:48%; --s:42px; --c:#E0D24A">
+      <span class="ic__tile"></span><span class="ic__label">Spotlightify</span></button>
+
+    <button class="ic" style="--x:30%; --y:52%; --s:46px; --c:#D95F3C">
+      <span class="ic__tile"></span><span class="ic__label">Série Objets</span></button>
+
+    <button class="ic" style="--x:18%; --y:54%; --s:40px; --c:#3A3A40">
+      <span class="ic__tile"></span><span class="ic__label">Links</span></button>
+
+    <button class="ic" style="--x:42%; --y:50%; --s:54px; --c:#9AA8B5">
+      <span class="ic__tile"></span><span class="ic__label">Motion</span></button>
+
+    <button class="ic" style="--x:82%; --y:55%; --s:44px; --c:#C25A2E">
+      <span class="ic__tile"></span><span class="ic__label">RPG</span></button>
+
+    <button class="ic" style="--x:54%; --y:65%; --s:44px; --c:#B03A2E">
+      <span class="ic__tile"></span><span class="ic__label">Merch</span></button>
+
+    <button class="ic" style="--x:45%; --y:69%; --s:42px; --c:#6E7A88">
+      <span class="ic__tile"></span><span class="ic__label">Fantasmagorie</span></button>
   </div>
-</header>
 
-<main>
-
-  <!-- ══ 1. ACCUEIL — l'écran bleu (référence : l'affiche à la tomate) ══ -->
-  <section class="landing" data-stage>
-    <div class="landing__sticky">
-
-      <div class="landing__bar">
-        <span class="landing__mark">Noah&nbsp;Guerbois<sup>®</sup></span>
-        <span class="landing__tags">
-          <b>Motion</b><i>|</i><b>Montage</b><i>|</i><b>Graphisme</b>
-        </span>
-      </div>
-
-      <h1 class="landing__word">Portfolio</h1>
-
-      <!-- REMPLACER PAR TA PHOTO :
-           <img src="img/cutouts/tomate.png" alt="">   ← la classe .halftone la trame -->
-      <div class="landing__object halftone" aria-hidden="true">
-        <svg viewBox="0 0 400 400" width="100%" height="100%">
-          <defs>
-            <radialGradient id="tg" cx="38%" cy="30%" r="74%">
-              <stop offset="0%" stop-color="#FF7A45"/><stop offset="46%" stop-color="#F2331C"/>
-              <stop offset="100%" stop-color="#A50C0C"/>
-            </radialGradient>
-            <radialGradient id="lg" cx="45%" cy="35%" r="60%">
-              <stop offset="0%" stop-color="#84E84F"/><stop offset="100%" stop-color="#1C7A1F"/>
-            </radialGradient>
-          </defs>
-          <ellipse cx="200" cy="224" rx="165" ry="152" fill="url(#tg)"/>
-          <ellipse cx="146" cy="166" rx="56" ry="40" fill="#FFA070" opacity=".62"/>
-          <ellipse cx="272" cy="292" rx="46" ry="62" fill="#8E0B0B" opacity=".35"/>
-          <g fill="url(#lg)">
-            <path d="M200 94c14 10 22 26 24 45-16-7-33-7-49 1 3-19 11-35 25-46z"/>
-            <path d="M198 132c-22-14-47-19-72-14 12 17 31 28 52 32 8 1 15-6 20-18z"/>
-            <path d="M202 132c22-14 47-19 72-14-12 17-31 28-52 32-8 1-15-6-20-18z"/>
-            <path d="M196 140c-14 16-22 36-23 57 20-6 37-19 47-37 4-8-8-20-24-20z"/>
-            <path d="M204 140c14 16 22 36 23 57-20-6-37-19-47-37-4-8 8-20 24-20z"/>
-          </g>
-          <path d="M200 90c4 0 7 3 7 7v44c0 4-3 7-7 7s-7-3-7-7V97c0-4 3-7 7-7z" fill="#186B1A"/>
-        </svg>
-      </div>
-
-      <div class="tagbox tagbox--l"><b>FRAIS</b><span>100&nbsp;%</span><b>TENDANCE</b><span>100&nbsp;%</span></div>
-      <div class="tagbox tagbox--r">Rafraîchissant&nbsp;!</div>
-
-      <a class="landing__cue" href="#tiroir">
-        <span>Ouvrir le tiroir</span>
-        <svg width="9" height="24" viewBox="0 0 9 24" aria-hidden="true"><path d="M4.5 0v22M1 18.5l3.5 4 3.5-4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
-      </a>
-    </div>
-  </section>
-
-  <!-- ══ 2. LE TIROIR — trier par type ══════════════════════════ -->
-  <section class="drawer" id="tiroir">
-    <div class="drawer__head">
-      <span class="dim">du brouillon</span><span class="dim">à</span><span class="dim">la forme</span>
-    </div>
-    <div class="drawer__title"><span>MES</span><span>PROJETS</span></div>
-
-    <div class="folders" id="folders">
-      <article class="folder" style="--c:#F2CE5B; --i:0" data-cat="Motion" tabindex="0" role="button" aria-pressed="false">
-        <span class="folder__label">MOTION</span>
-        <span class="peek peek--a"></span><span class="peek peek--b"></span>
-      </article>
-      <article class="folder" style="--c:#6E76D8; --i:1" data-cat="Montage" tabindex="0" role="button" aria-pressed="false">
-        <span class="folder__label">MONTAGE</span><span class="peek peek--a"></span>
-      </article>
-      <article class="folder" style="--c:#F0A6C4; --i:2" data-cat="Graphisme" tabindex="0" role="button" aria-pressed="false">
-        <span class="folder__label">GRAPHISME</span>
-        <span class="peek peek--a"></span><span class="peek peek--b"></span>
-      </article>
-      <article class="folder" style="--c:#74C583; --i:3" data-cat="Web" tabindex="0" role="button" aria-pressed="false">
-        <span class="folder__label">WEB</span>
-        <svg class="folder__star" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 2 62 38 98 38 69 60 80 96 50 74 20 96 31 60 2 38 38 38Z"/></svg>
-      </article>
-    </div>
-  </section>
-
-  <!-- ══ 3 + 4. LE CLASSEUR ET LA FENÊTRE ══════════════════════ -->
-  <section class="showcase" id="classeur">
-
-    <div class="sc__bar">
-      <span class="sc__mark">Projets<sup>®</sup></span>
-      <span class="sc__bartags">Sélection&nbsp;|&nbsp;Détail&nbsp;|&nbsp;Archive</span>
-    </div>
-
-    <!-- LE CLASSEUR : la liste numérotée -->
-    <div class="panel binder">
-      <div class="panel__meta">
-        <span>N.G.</span><span>24 — 26</span><span>Motion</span><span>Montage</span><span>Graphisme</span><span>Web</span>
-      </div>
-      <div class="binder__head">
-        <h2 class="binder__title">(sommaire)</h2>
-        <span class="binder__count" id="count">06 projets</span>
-      </div>
-
-      <ul class="catalog" id="catalog">
-        <li><button class="row is-active" data-cat="Motion"
-            data-title="Showreel 2025" data-type="Motion design" data-tool="After Effects"
-            data-year="2025" data-link=""
-            data-desc="[À REMPLIR] Compilation des meilleures séquences de l'année. Décris ici ce que tu as animé, avec quelle contrainte, et ce que tu en retiens.">
-          <span class="row__n">01</span><span class="row__t">Showreel 2025</span><span class="row__c">Motion</span></button></li>
-
-        <li><button class="row" data-cat="Montage"
-            data-title="Vidéos YouTube" data-type="Montage" data-tool="Premiere Pro"
-            data-year="2024 — 2025" data-link=""
-            data-desc="[À REMPLIR] La chaîne, le rythme de publication, le type de montage. Mets le lien de la chaîne dans data-link.">
-          <span class="row__n">02</span><span class="row__t">Vidéos YouTube</span><span class="row__c">Montage</span></button></li>
-
-        <li><button class="row" data-cat="Graphisme"
-            data-title="Affiches &amp; identité" data-type="Graphisme" data-tool="Photoshop, Illustrator"
-            data-year="2025" data-link=""
-            data-desc="[À REMPLIR] Une série d'affiches et un travail d'identité. Raconte la contrainte de départ.">
-          <span class="row__n">03</span><span class="row__t">Affiches &amp; identité</span><span class="row__c">Graphisme</span></button></li>
-
-        <li><button class="row" data-cat="Web"
-            data-title="odysseus" data-type="Site web" data-tool="HTML, CSS, JS"
-            data-year="2026" data-link="https://github.com/Nonowarwood/odysseus"
-            data-desc="Le périple d'Ulysse retracé sur une carte marine de la Méditerranée — une expérience de lecture au défilement.">
-          <span class="row__n">04</span><span class="row__t">odysseus</span><span class="row__c">Web</span></button></li>
-
-        <li><button class="row" data-cat="Web"
-            data-title="visualizer.mp3" data-type="Site web" data-tool="HTML, CSS, JS"
-            data-year="2026" data-link="https://github.com/Nonowarwood/visualizer.mp3"
-            data-desc="Les parutions de wave to earth et de CORTIS, parcourues une à une.">
-          <span class="row__n">05</span><span class="row__t">visualizer.mp3</span><span class="row__c">Web</span></button></li>
-
-        <li><button class="row" data-cat="Web"
-            data-title="K-Shelf" data-type="Site web" data-tool="HTML, CSS, JS"
-            data-year="2026" data-link="https://github.com/Nonowarwood/K-Shelf"
-            data-desc="Ma bibliothèque d'albums physiques, en virtuel.">
-          <span class="row__n">06</span><span class="row__t">K-Shelf</span><span class="row__c">Web</span></button></li>
-      </ul>
-
-      <p class="binder__empty" id="empty" hidden>Rien dans ce dossier pour l'instant.</p>
-    </div>
-
-    <!-- LA FENÊTRE : le projet ouvert -->
-    <div class="panel window" id="window">
-      <div class="panel__meta">
-        <span>Fenêtre</span><span id="w-year">2025</span><span id="w-type">Motion design</span>
-      </div>
-
-      <h2 class="window__title" id="w-title">Showreel 2025</h2>
-
-      <div class="window__body">
-        <div class="window__media">
-          <div class="thumb r-4x5" id="w-media"><span>IMG</span></div>
-          <span class="window__flag">Aperçu</span>
-        </div>
-
-        <div class="window__specs">
-          <p class="window__desc" id="w-desc"></p>
-          <dl class="specs">
-            <div><dt>Type</dt><dd id="s-type">—</dd><span class="specs__n">ONE</span></div>
-            <div><dt>Outils</dt><dd id="s-tool">—</dd><span class="specs__n">TWO</span></div>
-            <div><dt>Année</dt><dd id="s-year">—</dd><span class="specs__n">THREE</span></div>
-            <div><dt>Catégorie</dt><dd id="s-cat">—</dd><span class="specs__n">FOUR</span></div>
-          </dl>
-          <a class="window__link" id="w-link" href="#" hidden>Voir le projet →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="sc__foot"><span>Noah Guerbois</span><span>et</span><span id="w-num">01</span></div>
-  </section>
-
-  <!-- ══ 5. OUTILS ═════════════════════════════════════════════ -->
-  <section class="tools" id="outils">
-    <h2 class="section-title">Outils &amp; compétences</h2>
-    <div class="tools__inner">
-      <ul class="bars">
-        <li style="--v:85"><span>Premiere Pro</span><i></i><b>85</b></li>
-        <li style="--v:80"><span>After Effects</span><i></i><b>80</b></li>
-        <li style="--v:70"><span>Photoshop</span><i></i><b>70</b></li>
-        <li style="--v:60"><span>Figma</span><i></i><b>60</b></li>
-        <li style="--v:55"><span>Illustrator</span><i></i><b>55</b></li>
-        <li style="--v:45"><span>HTML / CSS</span><i></i><b>45</b></li>
-        <li style="--v:20"><span>JavaScript</span><i></i><b>20</b></li>
-      </ul>
-      <aside class="note"><p><em>Note.</em> Les pourcentages sont là pour la forme —
-        remplace-les par ce qui est honnête.</p></aside>
-    </div>
-    <div class="dock" aria-label="Logiciels">
-      <span class="dock__app">Pr</span><span class="dock__app">Ae</span><span class="dock__app">Ps</span>
-      <span class="dock__app">Ai</span><span class="dock__app">Fg</span><span class="dock__app">&lt;/&gt;</span>
-    </div>
-  </section>
-
-  <!-- ══ 6. À PROPOS ═══════════════════════════════════════════ -->
-  <section class="about" id="apropos">
-    <h2 class="section-title">À propos</h2>
-    <div class="about__inner">
-      <div class="thumb r-4x5 about__portrait"><span>PORTRAIT</span></div>
-      <div class="about__text">
-        <p class="lead">[À REMPLIR] Deux ou trois phrases sur toi. D'où vient l'envie
-        de faire des images, ce que tu cherches à apprendre cette année.</p>
-        <p>Évite le CV. Raconte plutôt comment tu bosses.</p>
-        <dl class="facts">
-          <div><dt>Année</dt><dd>Entrée en première — spé.&nbsp;NSI</dd></div>
-          <div><dt>Depuis</dt><dd>[À REMPLIR] 2022</dd></div>
-          <div><dt>Terrain</dt><dd>Motion, montage, direction artistique</dd></div>
-        </dl>
-      </div>
-    </div>
-  </section>
+  <!-- ── LE DOCK ──────────────────────────────────────────────── -->
+  <div class="dock" role="list" aria-label="Logiciels">
+    <span class="dock__i" role="listitem" style="--c:#00005B;--t:#9999FF">Ae</span>
+    <span class="dock__i" role="listitem" style="--c:#00005B;--t:#9999FF">Pr</span>
+    <span class="dock__i" role="listitem" style="--c:#001E36;--t:#31A8FF">Ps</span>
+    <span class="dock__i" role="listitem" style="--c:#330000;--t:#FF9A00">Ai</span>
+    <span class="dock__i" role="listitem" style="--c:#1C1C22;--t:#E6E6E6">C4D</span>
+    <span class="dock__i" role="listitem" style="--c:#1E1E22;--t:#F24E1E">Fg</span>
+    <span class="dock__sep" aria-hidden="true"></span>
+    <a class="dock__i" href="mailto:noahguerbois@gmail.com" style="--c:#2B6CF6;--t:#FFFFFF" aria-label="E-mail"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="5" width="19" height="14" rx="2.4"/><path d="m3 7 9 6 9-6"/></svg></a>
+    <a class="dock__i" href="https://github.com/Nonowarwood" style="--c:#24292F;--t:#FFFFFF">GH</a>
+  </div>
 
 </main>
-
-<footer id="contact">
-  <div class="receipt">
-    <h2>CONTACT</h2><hr>
-    <p class="receipt__sub">Chaque ligne est une porte d'entrée.</p><hr>
-    <ul>
-      <li><a href="mailto:noahguerbois@gmail.com"><span>E-mail</span><b>001</b></a></li>
-      <li><a href="#"><span>YouTube</span><b>002</b></a></li>
-      <li><a href="#"><span>Instagram</span><b>003</b></a></li>
-      <li><a href="https://github.com/Nonowarwood"><span>GitHub</span><b>004</b></a></li>
-    </ul><hr>
-    <p class="receipt__total"><span>Total</span><b>1 élève</b></p>
-  </div>
-  <div class="marquee" aria-hidden="true"><div class="marquee__track">
-    <span>Disponible pour projets ✳ Bienvenue sur mon portfolio ✳ Disponible pour projets ✳ Bienvenue sur mon portfolio ✳</span>
-    <span>Disponible pour projets ✳ Bienvenue sur mon portfolio ✳ Disponible pour projets ✳ Bienvenue sur mon portfolio ✳</span>
-  </div></div>
-  <div class="colophon">
-    <span>© 2026 Noah Guerbois</span>
-    <span class="dim">Fait à la main — HTML, CSS, un peu de JS</span>
-  </div>
-</footer>
 
 <script src="js/main.js"></script>
 </body>
